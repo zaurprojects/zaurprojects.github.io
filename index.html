@@ -23,7 +23,7 @@
             color: #E5E7EB;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Fix for horizontal scrollbar on hover */
+            overflow-x: hidden; /* Keep this for overall safety */
         }
 
         .page {
@@ -34,6 +34,8 @@
             align-items: center;
             padding: 2rem;
             animation: fadeIn 0.7s ease-in-out;
+            width: 100%; /* Ensure full width */
+            overflow-x: hidden; /* Apply fix directly to the page container */
         }
 
         .page.active {

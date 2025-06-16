@@ -52,11 +52,6 @@
             letter-spacing: -0.02em;
             color: #FFFFFF;
         }
-        
-        /* This new class is the fix for the hover scrollbar issue */
-        .intro-paragraph {
-             overflow: hidden;
-        }
 
         .intro-link {
             @apply text-gray-200 font-medium cursor-pointer relative inline-block;
@@ -68,12 +63,12 @@
             content: '';
             position: absolute;
             width: 100%;
-            transform: scaleX(0);
+            transform: scaleX(0); /* Start scaled to 0 */
             height: 1px;
             bottom: -2px;
             left: 0;
             background-color: #0ea5e9; /* Accent color */
-            transform-origin: bottom right;
+            transform-origin: center; /* Animation origin is the center */
             transition: transform 0.3s ease-out;
         }
 
@@ -82,8 +77,7 @@
         }
 
         .intro-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+            transform: scaleX(1); /* Scale to full width on hover */
         }
         
         .work-card {
@@ -105,7 +99,7 @@
     <section id="home-page" class="page active">
         <div class="text-center">
             <h1 class="main-heading">Zaur Khosrovov</h1>
-            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed intro-paragraph">
+            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed">
                 I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
                 <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
                 view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 

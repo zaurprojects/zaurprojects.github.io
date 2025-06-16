@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaur Khosrovov - Data Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #f9f9f9, #e0e7ff, #f9f9f9, #fde2e4);
+            background-size: 400% 400%;
+            animation: gradient-animation 25s ease infinite;
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header-logo {
+            font-weight: 700;
+            font-size: 1.125rem;
+            letter-spacing: -0.05em;
+        }
+
+        .nav-link {
+            @apply px-3 py-2 text-sm font-medium text-gray-600 hover:text-black transition-colors duration-300 cursor-pointer relative;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-heading {
+             font-size: clamp(3rem, 10vw, 6rem);
+             font-weight: 800;
+             letter-spacing: -0.03em;
+             line-height: 1.1;
+        }
+        .ampersand {
+            color: #888;
+        }
+        .work-card {
+            @apply bg-white/50 backdrop-blur-sm border border-gray-200/80 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:border-gray-300;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="flex flex-col min-h-screen">
+        <!-- Header -->
+        <header class="w-full sticky top-0 bg-white/30 backdrop-blur-md z-20">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="header-logo">
+                    <a href="#" onclick="showPage('home')"><span>ZK</span><span class="font-normal text-gray-500">—24</span></a>
+                </div>
+                <!-- Navigation -->
+                <nav>
+                    <ul class="flex items-center space-x-2 md:space-x-4">
+                        <li><a onclick="showPage('home')" class="nav-link active">Main</a></li>
+                        <li><a onclick="showPage('about')" class="nav-link">About</a></li>
+                        <li><a onclick="showPage('work')" class="nav-link">My Work</a></li>
+                        <li><a onclick="showPage('contact')" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-6 py-16 md:py-24">
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <div class="max-w-4xl">
+                    <h1 class="main-heading">
+                        Data Engineer <span class="ampersand">&</span><br>
+                        Solutions Architect
+                    </h1>
+                    <p class="mt-8 max-w-2xl text-lg text-gray-600 leading-relaxed">
+                        I'm Zaur Khosrovov, a data engineer specializing in building and optimizing data pipelines. I help businesses harness the power of their data to drive results and achieve their goals.
+                    </p>
+                </div>
+            </section>
+
+            <!-- About Page -->
+            <section id="about" class="page">
+                 <div class="max-w-4xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                       <p>
+                           Ever since I was young, I've been fascinated by how data can tell a story. This curiosity has led me on an incredible journey of building complex systems to process and analyze information, ultimately turning raw numbers into actionable insights.
+                       </p>
+                       <p>
+                           Professionally, I've had the privilege of working on large-scale data warehousing projects, where I honed my skills in ETL processes, data modeling, and cloud architecture. I thrive on the challenge of designing robust, scalable, and efficient data solutions. My toolkit includes Python, SQL, Spark, and various services across AWS and GCP.
+                       </p>
+                       <p>
+                           Outside of data, I'm passionate about exploring new technologies, contributing to open-source projects, and mentoring aspiring engineers.
+                       </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Page -->
+            <section id="work" class="page">
+                <div class="max-w-5xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">My Work</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Project 1 -->
+                        <div class="work-card">
+                            <h3 class="text-xl font-bold mb-2">Real-time Analytics Platform</h3>
+                            <p class="text-gray-600 mb-4">Developed a real-time data streaming and analytics platform for an e-commerce client, processing over 1 million events per minute to power live dashboards.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Kafka</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Spark Streaming</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Druid</span>
+                            </div>
+                        </div>
+                        <!-- Project 2 -->
+                        <div class="work-card">
+                            <h3 class="text-xl font-bold mb-2">Cloud Data Warehouse Migration</h3>
+                            <p class="text-gray-600 mb-4">Led the migration of a legacy on-premise data warehouse to a modern cloud-based solution on Google BigQuery, reducing query times by 90%.</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">BigQuery</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Airflow</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">SQL</span>
+                            </div>
+                        </div>
+                         <!-- Project 3 -->
+                        <div class="work-card">
+                            <h3 class="text-xl font-bold mb-2">Customer Segmentation Model</h3>
+                            <p class="text-gray-600 mb-4">Designed and implemented an ETL pipeline to feed a machine learning model for customer segmentation, improving marketing campaign targeting.</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Pandas</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded-full">AWS S3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact Page -->
+            <section id="contact" class="page">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Get In Touch</h2>
+                     <p class="text-gray-600 mb-8">
+                        I'm always open to new opportunities and collaborations. Let's build something great together.
+                    </p>
+                    <div id="contact-form-container">
+                        <form id="contactForm" class="space-y-5">
+                            <div>
+                                <input type="text" placeholder="Your Name" required class="w-full bg-white/50 backdrop-blur-sm border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black/50 transition-all duration-300">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" required class="w-full bg-white/50 backdrop-blur-sm border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black/50 transition-all duration-300">
+                            </div>
+                            <div>
+                                <textarea placeholder="Your Message" rows="5" required class="w-full bg-white/50 backdrop-blur-sm border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black/50 transition-all duration-300"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                     <div id="thank-you-message" class="hidden mt-8">
+                        <p class="text-xl">Thank you for your message!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-10 text-gray-500 text-sm">
+            <p>&copy; <span id="year"></span> Zaur Khosrovov. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Page Navigation Logic ---
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId)?.classList.add('active');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick') === `showPage('${pageId}')`) {
+                    link.classList.add('active');
+                }
+            });
+            window.scrollTo(0, 0); // Scroll to top on page change
+        }
+        
+        // --- Form Submission Logic ---
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                document.getElementById('contact-form-container').style.display = 'none';
+                document.getElementById('thank-you-message').style.display = 'block';
+            });
+        }
+
+        // --- Set current year in footer ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

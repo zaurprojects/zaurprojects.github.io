@@ -1,0 +1,113 @@
+@keyframes dynamic-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(-45deg, #000000, #0c0a1f, #000000, #130f2f);
+    background-size: 400% 400%;
+    animation: dynamic-gradient 30s ease infinite;
+    color: #E5E7EB;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Safety measure */
+}
+
+.page {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    animation: fadeIn 0.7s ease-in-out;
+    width: 100%; 
+}
+
+.page.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.main-heading {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+.intro-paragraph {
+     overflow: hidden;
+}
+
+.intro-link {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+    color: #9ca3af; /* a lighter gray */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.intro-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0); /* Start scaled to 0 */
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #0ea5e9; /* Accent color */
+    transform-origin: center; /* Animation origin is the center */
+    transition: transform 0.3s ease-out;
+}
+
+.intro-link:hover {
+     color: #FFFFFF;
+}
+
+.intro-link:hover::after {
+    transform: scaleX(1); /* Scale to full width on hover */
+}
+
+.work-card {
+    background-color: rgba(23, 23, 23, 0.5); /* Semi-transparent black */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem; /* 12px */
+    padding: 1.5rem; /* 24px */
+    transition: all 0.3s ease;
+}
+.work-card:hover {
+    border-color: rgba(56, 189, 248, 0.5); /* sky-500 */
+    background-color: rgba(23, 23, 23, 0.7);
+}
+
+.back-button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 8px */
+    padding: 0.5rem 1rem; /* 8px 16px */
+    background-color: rgba(23, 23, 23, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    color: #d1d5db; /* gray-300 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    color: #FFFFFF;
+    border-color: #6b7280; /* gray-500 */
+}

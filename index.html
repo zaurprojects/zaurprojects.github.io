@@ -4,94 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaur Khosrovov - Data Engineer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        @keyframes dynamic-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(-45deg, #000000, #0c0a1f, #000000, #130f2f);
-            background-size: 400% 400%;
-            animation: dynamic-gradient 30s ease infinite;
-            color: #E5E7EB;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Safety measure */
-        }
-
-        .page {
-            min-height: 100vh;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            animation: fadeIn 0.7s ease-in-out;
-            width: 100%; 
-        }
-
-        .page.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .main-heading {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #FFFFFF;
-        }
-
-        .intro-link {
-            @apply text-gray-200 font-medium cursor-pointer relative inline-block;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .intro-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0); /* Start scaled to 0 */
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #0ea5e9; /* Accent color */
-            transform-origin: center; /* Animation origin is the center */
-            transition: transform 0.3s ease-out;
-        }
-
-        .intro-link:hover {
-             color: #FFFFFF;
-        }
-
-        .intro-link:hover::after {
-            transform: scaleX(1); /* Scale to full width on hover */
-        }
-        
-        .work-card {
-            @apply bg-gray-900/70 border border-gray-800 rounded-lg p-6 transition-all duration-300 hover:border-sky-500/50 hover:bg-gray-800;
-        }
-        
-        .back-button {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            @apply px-4 py-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:border-gray-600 transition-all duration-300 cursor-pointer flex items-center gap-2;
-        }
-
-    </style>
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
 
@@ -99,7 +19,7 @@
     <section id="home-page" class="page active">
         <div class="text-center">
             <h1 class="main-heading">Zaur Khosrovov</h1>
-            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed">
+            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed intro-paragraph">
                 I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
                 <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
                 view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 
@@ -181,32 +101,8 @@
         </div>
     </section>
 
-
-    <script>
-        const pages = document.querySelectorAll('.page');
-
-        function showPage(pageId) {
-            // Hide all pages
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            // Show the selected page
-            const activePage = document.getElementById(pageId);
-            if (activePage) {
-               activePage.classList.add('active');
-            }
-        }
-        
-        // --- Form Submission Logic ---
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                document.getElementById('contact-form-container').style.display = 'none';
-                document.getElementById('thank-you-message').style.display = 'block';
-            });
-        }
-    </script>
+    <!-- Your Custom JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 </html>

@@ -25,14 +25,23 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .main-container {
-            display: flex;
+        .page {
+            min-height: 100vh;
+            display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            text-align: center;
             padding: 2rem;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .main-heading {
@@ -42,119 +51,87 @@
             color: #FFFFFF;
         }
 
-        .nav-button {
-            @apply px-6 py-3 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:border-gray-600 transition-all duration-300 cursor-pointer;
+        .intro-link {
+            @apply text-gray-200 font-medium cursor-pointer relative inline-block;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 50;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-container {
-            background-color: #111827; /* Dark blue-gray */
-            border: 1px solid #1f2937; /* Slightly lighter border */
-            border-radius: 1rem;
-            padding: 2.5rem;
-            max-width: 42rem;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal-overlay.active .modal-container {
-            transform: scale(1);
-        }
-
-        .modal-close-btn {
+        .intro-link::after {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 2.5rem;
-            height: 2.5rem;
-            background-color: #1f2937;
-            border-radius: 9999px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: #9ca3af;
-            transition: all 0.2s ease;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #0ea5e9; /* Accent color */
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
         }
-        
-        .modal-close-btn:hover {
-            background-color: #374151;
-            color: #fff;
-            transform: rotate(90deg);
+
+        .intro-link:hover {
+             color: #FFFFFF;
+        }
+
+        .intro-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         
         .work-card {
             @apply bg-gray-900/70 border border-gray-800 rounded-lg p-6 transition-all duration-300 hover:border-sky-500/50 hover:bg-gray-800;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            @apply px-4 py-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:border-gray-600 transition-all duration-300 cursor-pointer flex items-center gap-2;
         }
 
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Main Introduction -->
-    <div id="main-page" class="main-container">
-        <h1 class="main-heading">Zaur Khosrovov</h1>
-        <p class="mt-4 max-w-xl text-lg text-gray-400">
-            A Data Engineer based in Baku, Azerbaijan, focused on building robust data pipelines and transforming raw data into actionable insights.
-        </p>
-        <div class="mt-10 flex flex-wrap justify-center gap-4">
-            <button onclick="openModal('about-modal')" class="nav-button">About Me</button>
-            <button onclick="openModal('work-modal')" class="nav-button">My Work</button>
-            <button onclick="openModal('contact-modal')" class="nav-button">Contact</button>
+    <!-- Home Page Section -->
+    <section id="home-page" class="page active">
+        <div class="text-center">
+            <h1 class="main-heading">Zaur Khosrovov</h1>
+            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed">
+                I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
+                <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
+                view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 
+                or <span onclick="showPage('contact-page')" class="intro-link">get in touch</span>.
+            </p>
         </div>
-    </div>
+    </section>
 
-    <!-- Modals (Hidden by default) -->
-
-    <!-- About Modal -->
-    <div id="about-modal" class="modal-overlay">
-        <div class="modal-container">
-            <button onclick="closeModal('about-modal')" class="modal-close-btn" aria-label="Close">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h2 class="text-2xl font-bold text-white mb-6">About Me</h2>
-            <div class="space-y-4 text-gray-300 leading-relaxed">
+    <!-- About Page Section -->
+    <section id="about-page" class="page">
+        <button onclick="showPage('home-page')" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>
+            Back
+        </button>
+        <div class="max-w-2xl w-full">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">About Me</h2>
+            <div class="space-y-4 text-gray-300 leading-relaxed text-left">
                 <p>My fascination with data began with a simple curiosity: how can raw information tell a powerful story? This question has driven my career, leading me to build complex systems that process, analyze, and transform data into actionable insights that power business decisions.</p>
                 <p>I specialize in designing and implementing robust, scalable, and efficient data solutions. My professional experience includes large-scale data warehousing, real-time analytics, and cloud architecture. I have a strong command of Python, SQL, Spark, and various services across AWS and GCP, allowing me to tackle diverse and challenging data problems.</p>
-                <p>When I'm not architecting data pipelines, I enjoy exploring new technologies, contributing to open-source projects, and sharing my knowledge with others in the tech community.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Work Modal -->
-    <div id="work-modal" class="modal-overlay">
-        <div class="modal-container">
-             <button onclick="closeModal('work-modal')" class="modal-close-btn" aria-label="Close">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h2 class="text-2xl font-bold text-white mb-6">My Work</h2>
-            <div class="grid sm:grid-cols-2 gap-6">
-                <div class="work-card">
+    <!-- Work Page Section -->
+    <section id="work-page" class="page">
+        <button onclick="showPage('home-page')" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>
+            Back
+        </button>
+        <div class="max-w-4xl w-full">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">My Work</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="work-card text-left">
                     <h3 class="text-lg font-bold mb-2 text-white">Real-time Analytics Platform</h3>
                     <p class="text-gray-400 mb-4 text-sm">Developed a real-time data streaming and analytics platform for an e-commerce client, processing millions of events per minute.</p>
                     <div class="flex flex-wrap gap-2">
@@ -162,7 +139,7 @@
                         <span class="bg-sky-900 text-sky-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Spark</span>
                     </div>
                 </div>
-                <div class="work-card">
+                <div class="work-card text-left">
                     <h3 class="text-lg font-bold mb-2 text-white">Cloud Data Warehouse Migration</h3>
                     <p class="text-gray-400 mb-4 text-sm">Led the migration of a legacy data warehouse to Google BigQuery, improving query performance by over 90%.</p>
                      <div class="flex flex-wrap gap-2">
@@ -170,7 +147,7 @@
                         <span class="bg-sky-900 text-sky-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Airflow</span>
                     </div>
                 </div>
-                <div class="work-card">
+                <div class="work-card text-left">
                     <h3 class="text-lg font-bold mb-2 text-white">Customer Segmentation Model</h3>
                     <p class="text-gray-400 mb-4 text-sm">Implemented an ETL pipeline for a machine learning model that improved marketing campaign targeting and ROI.</p>
                      <div class="flex flex-wrap gap-2">
@@ -180,15 +157,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Contact Modal -->
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-container">
-             <button onclick="closeModal('contact-modal')" class="modal-close-btn" aria-label="Close">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h2 class="text-2xl font-bold text-white mb-6 text-center">Get In Touch</h2>
+    <!-- Contact Page Section -->
+    <section id="contact-page" class="page">
+        <button onclick="showPage('home-page')" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>
+            Back
+        </button>
+        <div class="max-w-xl w-full">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Get In Touch</h2>
             <p class="text-gray-400 mb-8 text-center text-sm">Have a project in mind or just want to connect? Feel free to send me a message.</p>
             <div id="contact-form-container">
                 <form id="contactForm" class="space-y-4">
@@ -200,37 +178,23 @@
             </div>
              <div id="thank-you-message" class="hidden mt-8 text-center"><p class="text-xl text-white">Thank you for your message!</p></div>
         </div>
-    </div>
+    </section>
 
 
     <script>
-        // --- Modal Logic ---
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if(modal) {
-                modal.classList.add('active');
-                // Prevent background from scrolling
-                document.body.style.overflow = 'hidden';
-            }
-        }
+        const pages = document.querySelectorAll('.page');
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if(modal) {
-                modal.classList.remove('active');
-                 // Allow background to scroll again
-                document.body.style.overflow = 'auto';
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show the selected page
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+               activePage.classList.add('active');
             }
         }
-        
-        // Close modal when clicking on the overlay
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(event) {
-                if(event.target === overlay) {
-                    closeModal(overlay.id);
-                }
-            });
-        });
         
         // --- Form Submission Logic ---
         const contactForm = document.getElementById('contactForm');

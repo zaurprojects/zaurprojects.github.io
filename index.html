@@ -23,7 +23,7 @@
             color: #E5E7EB;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Keep this for overall safety */
+            overflow-x: hidden; /* Safety measure */
         }
 
         .page {
@@ -34,8 +34,7 @@
             align-items: center;
             padding: 2rem;
             animation: fadeIn 0.7s ease-in-out;
-            width: 100%; /* Ensure full width */
-            overflow-x: hidden; /* Apply fix directly to the page container */
+            width: 100%; 
         }
 
         .page.active {
@@ -52,6 +51,11 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             color: #FFFFFF;
+        }
+        
+        /* This new class is the fix for the hover scrollbar issue */
+        .intro-paragraph {
+             overflow: hidden;
         }
 
         .intro-link {
@@ -101,7 +105,7 @@
     <section id="home-page" class="page active">
         <div class="text-center">
             <h1 class="main-heading">Zaur Khosrovov</h1>
-            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed">
+            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed intro-paragraph">
                 I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
                 <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
                 view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 

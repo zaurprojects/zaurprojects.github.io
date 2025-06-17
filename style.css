@@ -38,7 +38,7 @@ body {
 }
 
 .main-heading {
-    font-size: clamp(3rem, 10vw, 6.5rem); /* Increased the font size */
+    font-size: clamp(3rem, 10vw, 6.5rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;

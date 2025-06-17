@@ -36,10 +36,17 @@ body {
 }
 
 .main-heading {
-    font-size: clamp(2.5rem, 8vw, 5.5rem); /* Increased the maximum size */
+    font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     color: #FFFFFF;
+}
+
+.subtitle {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 400;
+    color: #9ca3af; /* gray-400 */
+    margin-top: 0.5rem; /* 8px */
 }
 
 .intro-paragraph {

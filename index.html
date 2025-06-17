@@ -15,6 +15,9 @@
 </head>
 <body class="antialiased">
 
+    <!-- Particle background canvas -->
+    <canvas id="particle-canvas"></canvas>
+
     <!-- Home Page Section -->
     <section id="home-page" class="page active">
         <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl text-center md:text-left">
@@ -43,7 +46,7 @@
         </button>
         <div class="max-w-2xl w-full">
             <h2 class="text-3xl font-bold text-white mb-8 text-center">About Me</h2>
-            <div class="space-y-4 text-gray-300 leading-relaxed text-left">
+            <div class="space-y-4 text-gray-300 leading-relaxed text-left bg-black/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg">
                 <p>My fascination with data began with a simple curiosity: how can raw information tell a powerful story? This question has driven my career, leading me to build complex systems that process, analyze, and transform data into actionable insights that power business decisions.</p>
                 <p>I specialize in designing and implementing robust, scalable, and efficient data solutions. My professional experience includes large-scale data warehousing, real-time analytics, and cloud architecture. I have a strong command of Python, SQL, Spark, and various services across AWS and GCP, allowing me to tackle diverse and challenging data problems.</p>
             </div>
@@ -95,16 +98,18 @@
         </button>
         <div class="max-w-xl w-full">
             <h2 class="text-3xl font-bold text-white mb-6 text-center">Get In Touch</h2>
-            <p class="text-gray-400 mb-8 text-center text-sm">Have a project in mind or just want to connect? Feel free to send me a message.</p>
-            <div id="contact-form-container">
-                <form id="contactForm" class="space-y-4">
-                    <div><input type="text" placeholder="Your Name" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></div>
-                    <div><input type="email" placeholder="Your Email" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></div>
-                    <div><textarea placeholder="Your Message" rows="5" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></textarea></div>
-                    <div><button type="submit" class="w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition-colors duration-300">Send Message</button></div>
-                </form>
+            <div class="bg-black/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg">
+                <p class="text-gray-400 mb-8 text-center text-sm">Have a project in mind or just want to connect? Feel free to send me a message.</p>
+                <div id="contact-form-container">
+                    <form id="contactForm" class="space-y-4">
+                        <div><input type="text" placeholder="Your Name" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></div>
+                        <div><input type="email" placeholder="Your Email" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></div>
+                        <div><textarea placeholder="Your Message" rows="5" required class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all duration-300"></textarea></div>
+                        <div><button type="submit" class="w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-sky-700 transition-colors duration-300">Send Message</button></div>
+                    </form>
+                </div>
+                 <div id="thank-you-message" class="hidden mt-8 text-center"><p class="text-xl text-white">Thank you for your message!</p></div>
             </div>
-             <div id="thank-you-message" class="hidden mt-8 text-center"><p class="text-xl text-white">Thank you for your message!</p></div>
         </div>
     </section>
 

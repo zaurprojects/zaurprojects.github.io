@@ -17,14 +17,21 @@
 
     <!-- Home Page Section -->
     <section id="home-page" class="page active">
-        <div class="text-center">
-            <h1 class="main-heading">Zaur Khosrovov</h1>
-            <p class="mt-4 max-w-xl text-lg text-gray-400 leading-relaxed intro-paragraph">
-                I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
-                <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
-                view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 
-                or <span onclick="showPage('contact-page')" class="intro-link">get in touch</span>.
-            </p>
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl text-center md:text-left">
+            <!-- Left Column -->
+            <div>
+                <h1 class="main-heading">Zaur Khosrovov</h1>
+                <p class="subtitle">Data Engineer</p>
+            </div>
+            <!-- Right Column -->
+            <div class="md:border-l md:border-gray-800 md:pl-8 lg:pl-16">
+                <p class="text-lg text-gray-400 leading-relaxed intro-paragraph">
+                    I'm a Data Engineer based in Baku, Azerbaijan. You can learn more 
+                    <span onclick="showPage('about-page')" class="intro-link">about me</span>, 
+                    view <span onclick="showPage('work-page')" class="intro-link">my work</span>, 
+                    or <span onclick="showPage('contact-page')" class="intro-link">get in touch</span>.
+                </p>
+            </div>
         </div>
     </section>
 

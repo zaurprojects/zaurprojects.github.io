@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaur — Aspiring Data Engineer</title>
+<meta name="description" content="Zaur — Computer Engineering graduate in Baku, learning data engineering by building small, honest projects.">
+<meta property="og:title" content="Zaur — Aspiring Data Engineer">
+<meta property="og:description" content="I turn curiosity into code. Projects, a short changelog of my life so far, and how to reach me.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f3f0e8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Zaur","jobTitle":"Aspiring Data Engineer","address":{"@type":"PostalAddress","addressLocality":"Baku","addressCountry":"AZ"},"alumniOf":"Khazar University","sameAs":["https://github.com/zaurprojects"]}
+</script>
+<style>
+:root{
+  --paper:#f3f0e8; --ink:#1b1b1a; --soft:#5e5c57; --faint:#9a978f; --rule:#d9d4c7;
+  --blue:#2b3fd0; --mark:rgba(43,63,208,.10);
+  --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+[data-theme="dark"]{
+  --paper:#141413; --ink:#ebe8e0; --soft:#a8a59c; --faint:#6f6c65; --rule:#2c2b28;
+  --blue:#93a2ff; --mark:rgba(147,162,255,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+/* faint paper grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+/* soft background: dot grid + faint glow, fading out below the intro */
+.bg{position:absolute;top:0;left:0;right:0;height:1100px;z-index:-1;pointer-events:none;overflow:hidden}
+.bg::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(var(--rule) 1.1px,transparent 1.3px);background-size:24px 24px;
+  mask-image:radial-gradient(ellipse 75% 60% at 70% 20%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 75% 60% at 70% 20%,#000 10%,transparent 70%)}
+.bg::after{content:"";position:absolute;width:640px;height:640px;right:-120px;top:-200px;border-radius:50%;
+  background:radial-gradient(circle,var(--mark),transparent 65%);filter:blur(20px)}
+/* contact card */
+.card{border:1px solid var(--rule);border-radius:14px;background:color-mix(in srgb,var(--paper) 70%,#fff 30%);max-width:560px;overflow:hidden}
+[data-theme="dark"] .card{background:color-mix(in srgb,var(--paper) 88%,#fff 12%)}
+.card div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 20px;border-top:1px solid var(--rule)}
+.card div:first-child{border-top:0}
+.card dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);padding-top:2px}
+.card dd{font-size:15.5px}
+.card a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+@media (max-width:520px){.card div{grid-template-columns:1fr;gap:2px}}
+::selection{background:var(--blue);color:var(--paper)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+.page{max-width:920px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--faint)}
+
+/* ---------- top bar ---------- */
+.top{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:14px}
+.top nav{display:flex;gap:22px;align-items:center}
+.top a{text-decoration:none;color:var(--soft);transition:color .2s}
+.top a:hover{color:var(--ink)}
+.name{font-family:var(--serif);font-size:20px;color:var(--ink)!important}
+.toggle{background:none;border:0;font:inherit;color:var(--soft);cursor:pointer;padding:0}
+.toggle:hover{color:var(--ink)}
+
+/* ---------- grid rows ---------- */
+.row{display:grid;grid-template-columns:150px 1fr;gap:32px;padding:72px 0;border-top:1px solid var(--rule)}
+.label{padding-top:6px}
+.label .mono{display:block}
+.label .n{color:var(--blue)}
+
+/* ---------- intro ---------- */
+.intro{padding:80px 0 96px}
+.intro .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:40px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3aa76d;margin-right:8px;vertical-align:1px;box-shadow:0 0 0 0 rgba(58,167,109,.5);animation:breathe 2.6s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 0 5px rgba(58,167,109,0)}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8.4vw,96px);line-height:1;letter-spacing:-.035em;max-width:11ch}
+h1 em{font-style:italic;position:relative;white-space:nowrap}
+h1 em svg{position:absolute;left:-2%;bottom:-.14em;width:104%;height:.32em;overflow:visible}
+h1 em path{fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.4s .5s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.intro p{font-size:19px;color:var(--soft);max-width:34em;margin-top:36px}
+.intro p strong{color:var(--ink);font-weight:500}
+.links{margin-top:28px;display:flex;gap:24px;font-size:15px}
+.links a{text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .2s,color .2s}
+.links a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ---------- section heads ---------- */
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,40px);letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
+.sub{color:var(--soft);margin-bottom:36px;max-width:34em}
+
+/* ---------- projects ---------- */
+.projects details{border-top:1px solid var(--rule)}
+.projects details:last-child{border-bottom:1px solid var(--rule)}
+.projects summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:22px 0;align-items:baseline}
+.projects summary::-webkit-details-marker{display:none}
+.p-title{font-family:var(--serif);font-size:24px;letter-spacing:-.01em;transition:color .2s}
+.p-line{grid-column:1;color:var(--soft);font-size:15px}
+.p-state{grid-row:1;grid-column:2;text-align:right}
+.p-plus{grid-row:2;grid-column:2;justify-self:end;width:14px;height:14px;position:relative}
+.p-plus::before,.p-plus::after{content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:var(--soft);transition:transform .35s var(--ease)}
+.p-plus::after{transform:rotate(90deg)}
+details[open] .p-plus::after{transform:rotate(0)}
+summary:hover .p-title{color:var(--blue)}
+.p-body{padding:0 0 28px;display:grid;grid-template-columns:1fr 1fr;gap:20px 32px;animation:open .45s var(--ease)}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}}
+.p-body h4{font-family:var(--mono);font-weight:400;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:6px}
+.p-body p{font-size:15px;color:var(--soft)}
+.p-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding-top:6px}
+.stack{font-family:var(--mono);font-size:12.5px;color:var(--soft)}
+.p-foot a{font-size:14px;color:var(--blue);text-decoration:none}
+.p-foot a:hover{text-decoration:underline;text-underline-offset:3px}
+.p-foot .later{font-size:14px;color:var(--faint)}
+
+/* ---------- changelog ---------- */
+.log{list-style:none}
+.log li{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:18px 0;border-top:1px dashed var(--rule)}
+.log li:first-child{border-top:0;padding-top:0}
+.ver{font-family:var(--mono);font-size:13px;color:var(--blue);padding-top:3px}
+.log h3{font-weight:500;font-size:16.5px;margin-bottom:2px}
+.log p{color:var(--soft);font-size:15px}
+.log .when{font-family:var(--mono);font-size:12px;color:var(--faint);margin-left:8px;font-weight:400}
+.log li.next .ver{color:var(--faint)}
+.log li.next h3::after{content:"_";color:var(--blue);margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ph{background:var(--mark);color:var(--blue);padding:0 5px;border-radius:3px;font-family:var(--mono);font-size:.85em}
+
+/* ---------- toolbox ---------- */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.tools h3{font-family:var(--mono);font-weight:400;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.tools ul{list-style:none}
+.tools li{font-size:16px;padding:5px 0}
+.tools .learning li{color:var(--soft)}
+.tools .later li{color:var(--faint)}
+.tools .learning li::before{content:"↻";font-size:12px;color:var(--blue);margin-right:10px}
+.tools .using li::before{content:"✓";font-size:12px;color:var(--ink);margin-right:10px}
+.tools .later li::before{content:"○";font-size:11px;margin-right:10px}
+
+/* ---------- contact ---------- */
+.contact h2{font-size:clamp(36px,5.6vw,60px);line-height:1.02;letter-spacing:-.03em;max-width:12ch;margin-bottom:22px}
+.contact h2 em{color:var(--blue)}
+.mail{display:inline-flex;align-items:baseline;gap:14px;margin-top:10px;font-family:var(--serif);font-size:clamp(22px,3vw,30px);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:4px;transition:color .2s,border-color .2s}
+.mail:hover{color:var(--blue);border-color:var(--blue)}
+.mail span{transition:transform .3s var(--ease)}
+.mail:hover span{transform:translateX(5px)}
+.copy{margin-left:14px;background:none;border:0;font:12px var(--mono);color:var(--faint);cursor:pointer}
+.copy:hover{color:var(--ink)}
+
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:36px 0 48px;border-top:1px solid var(--rule)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:720px){
+  .page{padding:0 22px}
+  .top nav a.hide-sm{display:none}
+  .row{grid-template-columns:1fr;gap:18px;padding:56px 0}
+  .label .mono{display:inline;margin-right:12px}
+  .intro{padding:48px 0 72px}
+  .p-body{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr;gap:28px}
+  .log li{grid-template-columns:60px 1fr;gap:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 em path{stroke-dashoffset:0}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="page">
+
+  <header class="top">
+    <a href="#" class="name">Zaur</a>
+    <nav aria-label="Primary">
+      <a href="#work" class="hide-sm">Work</a>
+      <a href="#log" class="hide-sm">Log</a>
+      <a href="#tools" class="hide-sm">Tools</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle" id="toggle" aria-label="Switch colour theme">Dark</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <section class="intro" aria-label="Introduction">
+      <div class="meta mono">
+        <span><span class="dot"></span>Open to junior data roles</span>
+        <span>Baku · <span id="clock">--:--</span></span>
+      </div>
+      <h1>Hi, I'm Zaur. I work with <em>data.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 70 4, 160 3, 297 10 M 40 17 C 120 11, 200 11, 260 15"/></svg></em></h1>
+      <p>Computer Engineering graduate with early experience as a <strong>data engineer</strong>. I like finding the data behind a question and building small, useful things with it.</p>
+      <div class="links">
+        <a href="#work">See my work ↓</a>
+        <a href="https://github.com/zaurprojects" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="row" id="work" aria-labelledby="work-h">
+      <div class="label"><span class="mono n">01</span><span class="mono">Work</span></div>
+      <div>
+        <h2 id="work-h" class="rv">Selected projects</h2>
+        <p class="sub rv">Projects I built on my own.</p>
+        <div class="projects rv">
+          <details>
+            <summary>
+              <span class="p-title">Baku Apartment Price Predictor</span>
+              <span class="p-state mono">in progress</span>
+              <span class="p-line">Is that listing priced fairly? A model that estimates it.</span>
+              <span class="p-plus" aria-hidden="true"></span>
+            </summary>
+            <div class="p-body">
+              <div><h4>Problem</h4><p>Apartment prices in Baku are hard to judge without context. Is 1,800 AZN/m² a lot for that district?</p></div>
+              <div><h4>Approach</h4><p>Collect listing data and train a regression model on size, rooms and location. It runs on a pilot sample now; full data collection is next.</p></div>
+              <div class="p-foot">
+                <span class="stack">Python · pandas · scikit-learn</span>
+                <span><a href="https://github.com/zaurprojects/baku-house-prices" target="_blank" rel="noopener">Source ↗</a> &nbsp; <span class="later">Demo soon</span></span>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="p-title">Customer Churn Prediction</span>
+              <span class="p-state mono">done</span>
+              <span class="p-line">Spotting customers who are about to leave, before they do.</span>
+              <span class="p-plus" aria-hidden="true"></span>
+            </summary>
+            <div class="p-body">
+              <div><h4>Problem</h4><p>Losing a customer costs more than keeping one, and companies usually notice too late.</p></div>
+              <div><h4>Approach</h4><p>A classification model that flags at-risk customers. Covers cleaning, feature engineering and evaluating the model properly.</p></div>
+              <div class="p-foot">
+                <span class="stack">Python · pandas · scikit-learn</span>
+                <span><a href="https://github.com/zaurprojects/customer-churn" target="_blank" rel="noopener">Source ↗</a></span>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="p-title">Next: an end-to-end pipeline</span>
+              <span class="p-state mono">planned</span>
+              <span class="p-line">Extract → clean → load → a simple dashboard on top.</span>
+              <span class="p-plus" aria-hidden="true"></span>
+            </summary>
+            <div class="p-body">
+              <div><h4>Why</h4><p>My first two projects are about modelling. This one is about the engineering side: moving data reliably from A to B.</p></div>
+              <div><h4>Plan</h4><p>A small, real data source, SQL for storage and Power BI for the final view. I'll write up what I learn here.</p></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Changelog -->
+    <section class="row" id="log" aria-labelledby="log-h">
+      <div class="label"><span class="mono n">02</span><span class="mono">Changelog</span></div>
+      <div>
+        <h2 id="log-h" class="rv">How I got here</h2>
+        <p class="sub rv">Where I studied and worked.</p>
+        <ol class="log rv">
+          <li><span class="ver">v0.1</span><div><h3>Computer Engineering, Khazar University <span class="when">20XX–20XX</span></h3><p>Programming, algorithms and databases. The first time I felt that click when a hard problem suddenly makes sense.</p></div></li>
+          <li><span class="ver">v0.2</span><div><h3>Data Engineer at VABITECH <span class="when">20XX</span></h3><p>My first job in data. I worked with real company data and learned how data work is done in a team.</p></div></li>
+          <li><span class="ver">v0.3</span><div><h3>Military service <span class="when">2024–2026</span></h3><p>Completed my military service.</p></div></li>
+          <li><span class="ver">v1.0</span><div><h3>Back to building <span class="when">2026</span></h3><p>Revising SQL, getting stronger in Python, and shipping projects to GitHub.</p></div></li>
+          <li class="next"><span class="ver">next</span><div><h3>A first data role</h3><p>A junior position where I can keep learning from a good team.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="row" id="tools" aria-labelledby="tools-h">
+      <div class="label"><span class="mono n">03</span><span class="mono">Toolbox</span></div>
+      <div>
+        <h2 id="tools-h" class="rv">What I work with</h2>
+        <p class="sub rv">What I use and what I'm learning.</p>
+        <div class="tools rv">
+          <div class="using"><h3>Using</h3><ul><li>SQL</li><li>Python</li><li>pandas</li><li>scikit-learn</li><li>Excel</li><li>Git &amp; GitHub</li><li>Jupyter</li></ul></div>
+          <div class="learning"><h3>Learning now</h3><ul><li>Power BI</li><li>Python, deeper</li><li>Algorithms</li></ul></div>
+          <div class="later"><h3>Up next</h3><ul><li>Airflow</li><li>dbt</li><li>Cloud data tools</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="row contact" id="contact" aria-labelledby="contact-h">
+      <div class="label"><span class="mono n">04</span><span class="mono">Contact</span></div>
+      <div>
+        <h2 id="contact-h" class="rv">Get in touch</h2>
+        <p class="sub rv">Connect with me.</p>
+        <dl class="card rv">
+          <div><dt>Status</dt><dd><span class="dot"></span>Open to work</dd></div>
+          <div><dt>Looking for</dt><dd>Data Engineer, Analyst roles</dd></div>
+          <div><dt>Based in</dt><dd>Baku, Azerbaijan</dd></div>
+          <div><dt>Reach me</dt><dd>Send a message on <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono">
+    <span>© <span id="yr">2026</span> Zaur · Baku</span>
+    <span><a href="#">Back to top ↑</a></span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const root = document.documentElement, btn = document.getElementById('toggle');
+  let t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (!t && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+  const apply = v => { root.setAttribute('data-theme', v || 'light'); btn.textContent = v === 'dark' ? 'Light' : 'Dark'; };
+  apply(t);
+  btn.addEventListener('click', () => {
+    const v = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(v); try { localStorage.setItem('theme', v); } catch (e) {}
+  });
+
+  // Baku local time
+  const clock = document.getElementById('clock');
+  const tick = () => { try { clock.textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Baku' }).format(new Date()); } catch (e) {} };
+  tick(); setInterval(tick, 30000);
+
+  // Reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

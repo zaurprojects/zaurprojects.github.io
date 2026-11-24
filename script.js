@@ -1,4 +1,7 @@
 (() => {
+  // 🎄 Christmas theme: set to false to turn it off
+  const CHRISTMAS = true;
+  if (CHRISTMAS) document.documentElement.classList.add('xmas');
   const root = document.documentElement, btn = document.getElementById('toggle');
   let t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
   if (!t && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
@@ -22,7 +25,9 @@
 
   // Typing effect in the small terminal chip
   const typed = document.getElementById('typed');
-  const words = ['python clean.py', 'SELECT * FROM ideas;', 'git push', 'learning...'];
+  const words = CHRISTMAS
+    ? ['echo "Merry Christmas!"', 'python clean.py', 'git push --gifts', 'Happy New Year 2027']
+    : ['python clean.py', 'SELECT * FROM ideas;', 'git push', 'learning...'];
   if (still) typed.textContent = words[0];
   else {
     let w = 0, i = 0, del = false;
@@ -75,6 +80,40 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !still) requestAnimationFrame(draw); });
   btn.addEventListener('click', () => { if (still) draw(); });
   resize(); draw();
+
+  // Christmas: lights + falling snow
+  if (CHRISTMAS) {
+    const L = document.getElementById('lights');
+    const count = Math.max(8, Math.round(innerWidth / 90));
+    L.innerHTML = '<i></i>'.repeat(count);
+
+    const sc = document.getElementById('snow'), sx = sc.getContext('2d');
+    let SW, SH, flakes = [];
+    const sResize = () => {
+      const d = devicePixelRatio || 1;
+      SW = innerWidth; SH = innerHeight;
+      sc.width = SW * d; sc.height = SH * d; sx.setTransform(d, 0, 0, d, 0, 0);
+      const n = Math.min(90, Math.round(SW * SH / 16000));
+      flakes = Array.from({ length: n }, () => ({ x: Math.random() * SW, y: Math.random() * SH, r: .8 + Math.random() * 2.2, s: .3 + Math.random() * .7, w: Math.random() * 6.28 }));
+    };
+    const snow = () => {
+      sx.clearRect(0, 0, SW, SH);
+      const dark = root.getAttribute('data-theme') === 'dark';
+      sx.fillStyle = dark ? 'rgba(255,255,255,.75)' : 'rgba(150,160,185,.55)';
+      for (const f of flakes) {
+        if (!still) {
+          f.y += f.s; f.w += .01; f.x += Math.sin(f.w) * .35;
+          if (f.y > SH + 4) { f.y = -4; f.x = Math.random() * SW; }
+        }
+        sx.beginPath(); sx.arc(f.x, f.y, f.r, 0, 7); sx.fill();
+      }
+      if (!still && !document.hidden) requestAnimationFrame(snow);
+    };
+    addEventListener('resize', () => { sResize(); if (still) snow(); });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && !still) requestAnimationFrame(snow); });
+    btn.addEventListener('click', () => { if (still) snow(); });
+    sResize(); snow();
+  }
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
